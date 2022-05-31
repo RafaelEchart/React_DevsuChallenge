@@ -1,0 +1,32 @@
+.search_bar {
+    background-color: white;
+    border: 2px solid lightgray;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+}
+
+.search_bar_icon {
+    margin: 5px !important;
+    color: gray;
+    font-size:20px;
+    display: flex;
+}
+
+.search_bar_input {
+    border: 0;
+    font-size: 17px;
+    width: 150px;
+    color: gray;
+
+}
+
+.search_bar_input::placeholder {
+    color: lightgray;
+}
+
+.search_bar_input:focus {
+    outline: none;
+}
+
