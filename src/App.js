@@ -3,6 +3,7 @@ import './App.css';
 import Title from './Components/Title'
 import SearchBar from './Components/SearchBar'
 import NewButton from './Components/NewButton'
+import ListPokemon from './Components/ListPokemon'
 
 function App() {
 
@@ -12,8 +13,10 @@ function App() {
       <div className="Search_New_Align">
       <SearchBar/>
       <NewButton/>
-      
       </div>
+
+      <ListPokemon/>
+
     </div>
   );
 }

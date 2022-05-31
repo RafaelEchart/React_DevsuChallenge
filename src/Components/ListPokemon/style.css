@@ -1,0 +1,47 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 95%;
+    background-color: white
+  }
+
+  .pokemon_table_container {
+    max-width: 1300px;
+    overflow-x: auto
+  }
+  
+  th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+  }
+
+  td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+ .pokemon_image {
+    text-align: center;
+  }
+
+  .pokemon_action_buttons {
+    display: flex;
+    justify-content: center;
+    color: #6657f8
+  }
+
+  .pokemon_edit_icon{
+    margin-right: 15px;
+    font-size: 19px;
+    cursor: pointer;
+  }
+  .pokemon_delete_icon{
+    font-size: 19px;
+    cursor: pointer;
+
+  }
+  
+  
+  
