@@ -4,6 +4,7 @@ import Title from './Components/Title'
 import SearchBar from './Components/SearchBar'
 import NewButton from './Components/NewButton'
 import ListPokemon from './Components/ListPokemon'
+import NewPokemon from './Components/NewPokemon'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
       </div>
 
       <ListPokemon/>
+      <NewPokemon/>
 
     </div>
   );
