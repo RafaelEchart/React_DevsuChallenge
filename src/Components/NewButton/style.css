@@ -1,0 +1,22 @@
+.newbutton {
+    background-color: #6657f8;
+	border: none;
+	padding: 0px 15px;
+	cursor: pointer;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #E5E5E5;
+}
+
+.newbutton_icon {
+    font-size: 25px;
+    padding: 0px 5px 0px 0px;
+    display: flex;
+}
+
+.newbutton_text {
+    font-size: 16px;
+    padding-top: 2px;
+}
