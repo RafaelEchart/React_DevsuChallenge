@@ -1,0 +1,14 @@
+.noPokemonsContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.noPokemons_title {
+    font-size: 25px;
+    font-weight: 700;
+}
+.noPokemons_action {
+    font-size: 20px;
+    font-weight: 600;
+    color: #6657f8;
+}
