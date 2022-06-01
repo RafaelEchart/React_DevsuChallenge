@@ -11,11 +11,11 @@ const NewPokemon = () => {
         <div className="side_container">
           <div className="new_pokemon_one_input_container">
           <label>Nombre:</label>
-          <input type="text" name="nombre"/>
+          <input type="text" name="nombre" />
           </div>  
           <div className="new_pokemon_one_input_container">
           <label>Imagen:</label>
-          <input type="text" name="imagen"/>
+          <input type="text" name="imagen" />
           </div>  
         </div>
         
@@ -27,7 +27,7 @@ const NewPokemon = () => {
           <span>
             1
           </span>
-          <input type="range" min="1" max="100"/>
+          <input type="range" min="1" max="100" className="new_pokemon_range"/>
           <span>
             100
           </span>
@@ -40,7 +40,7 @@ const NewPokemon = () => {
           <span>
             1
           </span>
-          <input type="range" min="1" max="100"/>
+          <input type="range" min="1" max="100" className="new_pokemon_range"/>
           <span>
             100
           </span>
