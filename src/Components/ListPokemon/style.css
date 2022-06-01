@@ -1,14 +1,14 @@
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 95%;
+    width: 100%;
     background-color: white;
-    margin-top: 20px;
   }
 
   .pokemon_table_container {
     max-width: 1300px;
-    overflow-x: auto
+    overflow-x: auto;
+    margin-top: 20px;
   }
   
   th {
