@@ -1,39 +1,30 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchGetAllPokemons } from '../../redux/main/getPokemons';
+
+
 import LoaderSpinner from "../LoaderSpinner";
 import NoPokemons from "../NoPokemons";
 
 import "./style.css";
 
 const ListPokemon = () => {
-  const [pokemonList, setPokemonList] = useState(undefined);
-  const [loading, setLoading] = useState(false);
+  const {isLoading, data} = useSelector((state) => state.getPokemons);
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
-    initialFetchPokemons();
+    dispatch(fetchGetAllPokemons())
   }, []);
 
-  const initialFetchPokemons = async () => {
-    try {
-      setLoading(true);
-      let fetchAllPokemons = await fetch(
-        "https://pokemon-pichincha.herokuapp.com/pokemons/?idAuthor=1"
-      );
-      fetchAllPokemons = await fetchAllPokemons.json();
-      console.log(fetchAllPokemons)
-      setPokemonList(fetchAllPokemons);
-      setLoading(false);
-    } catch (err) {
-      setLoading(false);
-    }
-  };
-
+  
   return (
     <div className="pokemon_table_container">
-      {loading && !pokemonList && <LoaderSpinner />}
+      {isLoading && !data && <LoaderSpinner />}
 
-      {!loading && pokemonList && (
+      {!isLoading && data && (
         <>
-          {pokemonList.length ? (
+          {data.length ? (
             <table>
               <tr>
                 <th>Nombre</th>
@@ -43,7 +34,7 @@ const ListPokemon = () => {
                 <th>Acciones</th>
               </tr>
 
-              {pokemonList.map((pokemon) => (
+              {data.map((pokemon) => (
                 <tr key={pokemon.id}>
                   <td>{pokemon.name}</td>
                   <td className="pokemon_image">
@@ -70,10 +61,13 @@ const ListPokemon = () => {
               ))}
             </table>
           ) : (
-            <NoPokemons />
+            <NoPokemons type="no_data" />
           )}
+
         </>
       )}
+
+      {!isLoading && !data && <NoPokemons type="not_found" />}
     </div>
   );
 };

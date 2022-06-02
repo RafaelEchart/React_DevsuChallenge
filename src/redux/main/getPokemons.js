@@ -10,9 +10,9 @@ const fetchData = (data) => ({
   payload: data,
 });
 
-const isLoading = () => ({
+const isLoading = (boolean) => ({
   type: IS_LOADING_POKEMONS,
-  data: initialState.isLoading
+  payload: boolean
 });
 
 
@@ -20,27 +20,51 @@ const isLoading = () => ({
 
 export const fetchGetAllPokemons = () => async (dispatch) => {
   try {
-    dispatch(isLoading())
+    dispatch(isLoading(true))
     let fetchAllPokemons = await fetch(
       "https://pokemon-pichincha.herokuapp.com/pokemons/?idAuthor=1"
     );
     fetchAllPokemons = await fetchAllPokemons.json();
     dispatch(fetchData(fetchAllPokemons));
-    dispatch(isLoading())
+    dispatch(isLoading(false))
   } catch (err) {
     dispatch(fetchData(undefined));
-    dispatch(isLoading())
+    dispatch(isLoading(false))
+  }
+};
+
+export const fetchGetByIDPokemons = (id) => async (dispatch) => {
+  try {
+    dispatch(isLoading(true))
+    let fetchIDPokemons = await fetch(
+      `https://pokemon-pichincha.herokuapp.com/pokemons/${id}`
+    );
+
+
+    if(fetchIDPokemons.ok === false){
+      dispatch(fetchData(undefined));
+      
+    } else {
+      fetchIDPokemons = await fetchIDPokemons.json();
+      dispatch(fetchData([fetchIDPokemons]));
+
+    }
+    
+    dispatch(isLoading(false))
+  } catch (err) {
+    dispatch(fetchData(undefined));
+    dispatch(isLoading(false))
   }
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ALL_POKEMONS:
-     return initialState.data = action.payload;
+     return {...state, data: action.payload};
 
 
     case IS_LOADING_POKEMONS:
-     return initialState.isLoading = !action.payload
+      return {...state, isLoading: action.payload};
 
     default:
       return state;
