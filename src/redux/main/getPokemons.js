@@ -5,7 +5,7 @@ const IS_LOADING_POKEMONS = 'IS_LOADING_POKEMONS';
 
 const initialState = {isLoading: false, data: undefined};
 
-const fetchData = (data) => ({
+export const fetchData = (data) => ({
   type: FETCH_ALL_POKEMONS,
   payload: data,
 });

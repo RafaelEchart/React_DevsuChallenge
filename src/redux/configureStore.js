@@ -4,7 +4,7 @@ import logger from 'redux-logger';
 import dataReducerGetPokemons from './main/getPokemons';
 import dataReducerPostPUTPokemons from './main/post_updatePokemon';
 
-const reducer = combineReducers({
+export const reducer = combineReducers({
   getPokemons: dataReducerGetPokemons,
   postputPokemons: dataReducerPostPUTPokemons,
 });

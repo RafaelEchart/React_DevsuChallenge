@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchGetAllPokemons } from '../../redux/main/getPokemons';
-import { useHttpClient } from '../../shared-hooks/http-hook'
-import { editPokemon, cancelPokemon } from '../../redux/main/post_updatePokemon';
+import IndividualPokemon from './IndividualPokemon'
+
 
 
 
@@ -14,7 +14,6 @@ import "./style.css";
 const ListPokemon = () => {
   const {isLoading, data} = useSelector((state) => state.getPokemons);
   const dispatch = useDispatch();
-  const { deletePokemon } = useHttpClient()
 
 
 
@@ -42,29 +41,7 @@ const ListPokemon = () => {
               </tr>
 
               {data.map((pokemon) => (
-                <tr key={pokemon.id}>
-                  <td>{pokemon.name}</td>
-                  <td className="pokemon_image">
-                    <img
-                      src={pokemon.image}
-                      width="25"
-                      alt="pokemon_image"
-                    />
-                  </td>
-                  <td>{pokemon.attack}</td>
-                  <td>{pokemon.defense}</td>
-                  <td>
-                    <div className="pokemon_action_buttons">
-                      <div className="pokemon_edit_icon" onClick={()=> dispatch(editPokemon(pokemon.id, pokemon.name, pokemon.image, pokemon.attack, pokemon.defense))} >
-                        <ion-icon name="create-outline"></ion-icon>
-                      </div>
-
-                      <div className="pokemon_delete_icon">
-                        <ion-icon name="trash-outline" onClick={()=> deletePokemon(pokemon.id) }></ion-icon>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
+                <IndividualPokemon pokemon={pokemon} />
               ))}
             </table>
           ) : (

@@ -21,7 +21,7 @@ const SearchBar = () => {
         <div className="search_bar_icon">
         <ion-icon name="search-outline"></ion-icon>
         </div>    
-        <input placeholder="Buscar" onChange={(input) => searchBarHandler(input.target.value)} className="search_bar_input"/>
+        <input placeholder="Buscar" name="search" data-testid="search-input" onChange={(input) => searchBarHandler(input.target.value)} className="search_bar_input"/>
         </div>
         
     )
