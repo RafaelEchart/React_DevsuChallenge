@@ -29,11 +29,11 @@ const NewPokemon = () => {
         <div className="side_container">
           <div className="new_pokemon_one_input_container">
             <label>Nombre:</label>
-            <input type="text" name="name" onChange={(e)=>inputHandler(e) } defaultValue={pokemonData.name ? pokemonData.name : ""} />
+            <input type="text" name="name" onChange={(e)=>inputHandler(e) } value={pokemonData.name ? `${pokemonData.name}` : ""} />
           </div>
           <div className="new_pokemon_one_input_container">
             <label>Imagen:</label>
-            <input type="text" name="image" onChange={(e)=>inputHandler(e) } defaultValue={pokemonData.image ? pokemonData.image : ""}/>
+            <input type="text" name="image" onChange={(e)=>inputHandler(e) } value={pokemonData.image ? `${pokemonData.image}` : ""}/>
           </div>
         </div>
 
@@ -50,7 +50,7 @@ const NewPokemon = () => {
                   max="100"
                   className="new_pokemon_range"
                   onChange={(e)=>inputHandler(e) }
-                  defaultValue={pokemonData.attack ? pokemonData.attack : "0"}
+                  value={pokemonData.attack ? `${pokemonData.attack}` : "0"}
                 />
 
                 <span className="tooltiptext">{pokemonData.attack}</span>
@@ -70,7 +70,7 @@ const NewPokemon = () => {
                   max="100"
                   className="new_pokemon_range"
                   onChange={(e)=>inputHandler(e) }
-                  defaultValue={pokemonData.defense ? pokemonData.defense : "0"}
+                  value={pokemonData.defense ? `${pokemonData.defense}` : "0"}
                 />
 
                 <span className="tooltiptext">{pokemonData.defense}</span>

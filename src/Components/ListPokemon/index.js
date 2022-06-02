@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchGetAllPokemons } from '../../redux/main/getPokemons';
 import { useHttpClient } from '../../shared-hooks/http-hook'
+import { editPokemon, cancelPokemon } from '../../redux/main/post_updatePokemon';
 
 
 
@@ -54,7 +55,7 @@ const ListPokemon = () => {
                   <td>{pokemon.defense}</td>
                   <td>
                     <div className="pokemon_action_buttons">
-                      <div className="pokemon_edit_icon">
+                      <div className="pokemon_edit_icon" onClick={()=> dispatch(editPokemon(pokemon.id, pokemon.name, pokemon.image, pokemon.attack, pokemon.defense))} >
                         <ion-icon name="create-outline"></ion-icon>
                       </div>
 
