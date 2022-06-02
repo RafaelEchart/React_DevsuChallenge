@@ -22,8 +22,9 @@ export const useHttpClient = () => {
           `https://pokemon-pichincha.herokuapp.com/pokemons/${id}`, {
             method: 'DELETE'
           }
-        );
-        
+          );
+          
+        dispatch(cancelPokemon())
         dispatch(fetchGetAllPokemons())
       } catch (err) {
         dispatch(isLoading(false))
