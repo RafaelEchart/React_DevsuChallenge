@@ -68,9 +68,45 @@ export const useHttpClient = () => {
 
     
   }
+ 
+  const putPokemon = async (id) => {
+
+
+    try {
+        dispatch(cancelPokemon())
+        dispatch(pokemonLoading(true))
+        await fetch(
+          `https://pokemon-pichincha.herokuapp.com/pokemons/${id}`, {
+            method: 'PUT', 
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              name: pokemonData.name,
+              image: pokemonData.image,
+              attack: pokemonData.attack,
+              defense: pokemonData.defense,
+              type: 'normal',
+              hp: 100,
+              idAuthor: "1"
+            })
+          }
+          );
+          
+          dispatch(pokemonLoading(false))
+          dispatch(fetchGetAllPokemons())
+        } catch (err) {
+          dispatch(cancelPokemon())
+          dispatch(isLoading(false))
+          dispatch(pokemonLoading(false))
+      }
+
+
+    
+  }
 
 
 
     
-  return { postPokemon, deletePokemon };
+  return { postPokemon, deletePokemon, putPokemon };
 };

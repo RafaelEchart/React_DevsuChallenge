@@ -7,7 +7,7 @@ import "./style.css";
 
 const NewPokemon = () => {
 
-  const { postPokemon } = useHttpClient()
+  const { postPokemon, putPokemon } = useHttpClient()
 
 
   const {open, pokemonData, isLoading} = useSelector((state) => state.postputPokemons);
@@ -82,7 +82,7 @@ const NewPokemon = () => {
       </div>
 
       <div className="action_button_container">
-        <button type="button" className="newbutton action_button" onClick={()=>{pokemonData.id ? postPokemon() : postPokemon()}}>
+        <button type="button" className="newbutton action_button" onClick={()=>{pokemonData.id ? putPokemon(pokemonData.id) : postPokemon()}}>
           <div className="newbutton_icon">
             <ion-icon name="save-outline"></ion-icon>
           </div>
