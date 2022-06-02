@@ -10,7 +10,7 @@ const fetchData = (data) => ({
   payload: data,
 });
 
-const isLoading = (boolean) => ({
+export const isLoading = (boolean) => ({
   type: IS_LOADING_POKEMONS,
   payload: boolean
 });

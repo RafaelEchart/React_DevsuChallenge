@@ -8,12 +8,9 @@ const SearchBar = () => {
 
 
     const searchBarHandler = (input) => {
-        console.log(input)
         if(input.length){
-            console.log("by id")
             dispatch(fetchGetByIDPokemons(input))
         } else {
-            console.log("all pokemons")
             dispatch(fetchGetAllPokemons())
         }
     }

@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchGetAllPokemons } from '../../redux/main/getPokemons';
+import { useHttpClient } from '../../shared-hooks/http-hook'
+
 
 
 import LoaderSpinner from "../LoaderSpinner";
@@ -11,11 +13,15 @@ import "./style.css";
 const ListPokemon = () => {
   const {isLoading, data} = useSelector((state) => state.getPokemons);
   const dispatch = useDispatch();
+  const { deletePokemon } = useHttpClient()
+
 
 
   useEffect(() => {
     dispatch(fetchGetAllPokemons())
   }, []);
+
+
 
   
   return (
@@ -53,7 +59,7 @@ const ListPokemon = () => {
                       </div>
 
                       <div className="pokemon_delete_icon">
-                        <ion-icon name="trash-outline"></ion-icon>
+                        <ion-icon name="trash-outline" onClick={()=> deletePokemon(pokemon.id) }></ion-icon>
                       </div>
                     </div>
                   </td>
