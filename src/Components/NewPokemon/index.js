@@ -1,9 +1,8 @@
-import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { cancelPokemon } from '../../redux/main/post_updatePokemon';
 import { handleInput } from '../../redux/main/post_updatePokemon';
 import { useHttpClient } from '../../shared-hooks/http-hook'
-
+import LoaderSpinner from '../LoaderSpinner'
 import "./style.css";
 
 const NewPokemon = () => {
@@ -11,7 +10,7 @@ const NewPokemon = () => {
   const { postPokemon } = useHttpClient()
 
 
-  const {open, pokemonData} = useSelector((state) => state.postputPokemons);
+  const {open, pokemonData, isLoading} = useSelector((state) => state.postputPokemons);
   const dispatch = useDispatch();
 
   const inputHandler = (input) => {
@@ -97,6 +96,8 @@ const NewPokemon = () => {
         </button>
       </div>
     </div>}
+
+    {isLoading && <LoaderSpinner/>}
    </>
   );
 };

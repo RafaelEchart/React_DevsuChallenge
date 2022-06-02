@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { isLoading } from '../redux/main/getPokemons';
 import { fetchGetAllPokemons } from '../redux/main/getPokemons';
+import { cancelPokemon } from '../redux/main/post_updatePokemon';
+import { pokemonLoading } from '../redux/main/post_updatePokemon';
 
 export const useHttpClient = () => {
   const {pokemonData} = useSelector((state) => state.postputPokemons);
@@ -34,7 +36,9 @@ export const useHttpClient = () => {
   const postPokemon = async () => {
 
 
-      try {
+    try {
+        dispatch(cancelPokemon())
+        dispatch(pokemonLoading(true))
         await fetch(
           `https://pokemon-pichincha.herokuapp.com/pokemons/?idAuthor=1`, {
             method: 'POST', 
@@ -51,13 +55,14 @@ export const useHttpClient = () => {
               idAuthor: "1"
             })
           }
-        );
-        
-        dispatch(fetchGetAllPokemons())
-      } catch (err) {
-        console.log('error')
-        console.log(err)
-        dispatch(isLoading(false))
+          );
+          
+          dispatch(pokemonLoading(false))
+          dispatch(fetchGetAllPokemons())
+        } catch (err) {
+          dispatch(cancelPokemon())
+          dispatch(isLoading(false))
+          dispatch(pokemonLoading(false))
       }
 
 

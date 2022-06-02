@@ -21,6 +21,7 @@ export const isLoading = (boolean) => ({
 export const fetchGetAllPokemons = () => async (dispatch) => {
   try {
     dispatch(isLoading(true))
+    dispatch(fetchData(undefined));
     let fetchAllPokemons = await fetch(
       "https://pokemon-pichincha.herokuapp.com/pokemons/?idAuthor=1"
     );
